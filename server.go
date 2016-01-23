@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/advancedlogic/GoOse"
 	"github.com/gin-gonic/gin"
 )
 
@@ -61,22 +60,16 @@ func main() {
 		path := c.Param("path")
 		query := c.Request.URL.Query().Encode()
 
-		u := url.URL{
-			Scheme:   scheme,
-			Host:     host,
-			Path:     path,
-			RawQuery: query,
-		}
+		u := url.URL{Scheme: scheme, Host: host, Path: path, RawQuery: query}
 
-		g := goose.New()
-		article, err := g.ExtractFromURL(u.String())
+		article, err := extractFromURL(u)
 		if err != nil {
 			log.Println(err)
 			c.String(http.StatusInternalServerError, "")
 			return
 		}
 
-		c.String(http.StatusOK, article.CleanedText)
+		c.String(http.StatusOK, article)
 	})
 
 	web.Run(":3000")
