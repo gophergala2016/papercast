@@ -21,7 +21,11 @@ type InstapaperFeedItem struct {
 	PubDate     string `xml:"pubDate"`
 }
 
-func (item InstapaperFeedItem) toXML() *RssItem {
+func (item InstapaperFeedItem) toXML() (*RssItem, error) {
+	proxyLink, err := generateProxyLink(item.Link)
+	if err != nil {
+		return nil, err
+	}
 	return &RssItem{
 		Title:       item.Title,
 		Description: item.Description,
@@ -29,10 +33,10 @@ func (item InstapaperFeedItem) toXML() *RssItem {
 		Link:        item.Link,
 		GUID:        item.Link,
 		Enclosure: &RssEnclosure{
-			URL:  proxyLink(item.Link),
+			URL:  proxyLink,
 			Type: "audio/mpeg",
 		},
-	}
+	}, nil
 }
 
 // Instapaper Instapaper

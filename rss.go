@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/xml"
+	"log"
 )
 
 // RssFeedXML RssFeedXML
@@ -87,7 +88,12 @@ func feedFromInstapaper(insta *InstapaperFeed) *RssFeedXML {
 	}
 
 	for _, item := range insta.Items {
-		feed.Channel.Items = append(feed.Channel.Items, item.toXML())
+		data, err := item.toXML()
+		if err != nil {
+			log.Println(err)
+			continue
+		}
+		feed.Channel.Items = append(feed.Channel.Items, data)
 	}
 
 	return feed
