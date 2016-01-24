@@ -34,7 +34,7 @@ func (item InstapaperFeedItem) toXML() (*RssItem, error) {
 		GUID:        item.Link,
 		Enclosure: &RssEnclosure{
 			URL:  proxyLink,
-			Type: "audio/mpeg",
+			Type: "audio/x-m4a",
 		},
 	}, nil
 }

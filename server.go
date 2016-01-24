@@ -69,7 +69,17 @@ func main() {
 			return
 		}
 
-		c.String(http.StatusOK, article)
+		audioBuffer, err := speak(article)
+		if err != nil {
+			log.Println(err)
+			c.String(http.StatusInternalServerError, "")
+			return
+		}
+
+		err = audioBuffer.WriteTo(c.Writer)
+		if err != nil {
+			log.Println(err)
+		}
 	})
 
 	web.Run(":3000")

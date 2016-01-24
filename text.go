@@ -12,5 +12,5 @@ func extractFromURL(u url.URL) (string, error) {
 		return "", err
 	}
 
-	return article.CleanedText, nil
+	return article.Title + "\n\n" + article.CleanedText, nil
 }
