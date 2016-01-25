@@ -33,7 +33,7 @@ Note: papercast.xyz is not yet operational. Please use `localhost:3000` instead.
 
 ## After Gopher Gala 2016
 
-Port to Linux and run as a free service at https://papercast.xyz/
+Port to Linux and run as a free service at http://papercast.xyz/
 
 ## Subscribe to updates
 
