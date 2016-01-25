@@ -24,6 +24,8 @@ Currently only supports **MacOS X**, since I use SpeechSynthesis.framework. Edit
 
 ## How To Use
 
+Note: papercast.xyz is not yet operational. Please use `localhost:3000` instead.
+
 1. Open https://www.instapaper.com/u
 2. Click your email (top right corner), then **Download** and choose **RSS Feed**
 3. Replace domain in the link from https://www.instapaper.com to http://papercast.xyz to end up with something like `http://papercast.xyz/rss/12345/s0m3h4sh`
